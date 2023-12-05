@@ -1,0 +1,11 @@
+<button (click)="makeRequest()">Make Request</button>
+<br>
+
+<div *ngIf="loading">Loading....</div>
+
+
+<div *ngIf="errorMessage">
+    <pre>{{ errorMessage | json }}</pre>
+</div>
+
+<pre>{{ data | json}} </pre>

@@ -12,6 +12,7 @@ import { UsersService } from '../services/users.service';
 export class UsersComponent implements OnInit{
 
   users: any;
+  message: any;
 
   service = inject(UsersService)
 
@@ -19,15 +20,24 @@ export class UsersComponent implements OnInit{
   ngOnInit(){
     // this.users =  this.service.getUsers();
 
-    this.service.getUsers().subscribe({
-      next: response => this.users = response,
-      error: err => alert(err),
-      complete: () => alert("Data Fetch Completed...")
-    });
-
-
-
+    // this.service.getUsers().subscribe({
+    //   next: response => this.users = response,
+    //   error: err => alert(err),
+    //   complete: () => alert("Data Fetch Completed...")
+    // });
   }
 
+  postData(){
+
+    const data = {
+      name: "morpheus",
+      job: "leader"
+    }
+
+    this.service.postUser(data).subscribe({
+      next: data => this.message = data,
+      error: err => alert(err),
+    })
+  }
 
 }
